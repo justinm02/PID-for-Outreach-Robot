@@ -12,10 +12,6 @@ public class PID {
         this.kd = kd;
         lastTime = 0;
     }
-    public void reset() {
-        lastError = 0;
-        totalError = 0;
-    }
 
     public double getP(double error) {
         return kp * error;
@@ -23,7 +19,7 @@ public class PID {
 
     public double getI(double error) {
         if (Math.abs(error) < 1)
-            return 0;
+            totalError = 0;
         return ki * totalError;
     }
 
